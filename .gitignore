@@ -43,3 +43,4 @@ build/
 *.sql
 *.xml
 *.sh
+.idea/
