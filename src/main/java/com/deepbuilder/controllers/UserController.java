@@ -14,7 +14,11 @@ import com.deepbuilder.services.UserService;
 @CrossOrigin
 @RequestMapping("/api/users")
 public class UserController {
-UserService userService;
+private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
 
     @PostMapping()
@@ -23,8 +27,8 @@ UserService userService;
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         try{
-            return createNewUser(user);
-
+            User savedUser = userService.createUser(user);
+            return ResponseEntity.ok(savedUser);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         } catch (Exception e){

@@ -1,18 +1,18 @@
 package com.deepbuilder.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "\"users\"")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long userId;
-    public String username;
-    public String hash;
+    @Column(name = "user_id")
+    private Long userId;
+    @Column(name = "user_name")
+    private String username;
+    private String hash;
 
     public User() {
     }
@@ -21,6 +21,9 @@ public class User {
         return userId;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getUsername() {
         return username;

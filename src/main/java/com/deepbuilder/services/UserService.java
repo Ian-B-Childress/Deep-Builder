@@ -15,12 +15,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    User createUser(String username, String password){
-        User user = new User();
-        user.setUsername(username);
-        user.setHash(password);
+   public User createUser(User user){
         try{
-            if(user.getUsername().isBlank() ^ user.getHash().isBlank()){
+            if(user.getUsername().isBlank() || user.getHash().isBlank()){
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
