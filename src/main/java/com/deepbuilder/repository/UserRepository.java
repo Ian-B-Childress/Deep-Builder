@@ -1,5 +1,5 @@
-package repository;
-import entities.User;
+package com.deepbuilder.repository;
+import com.deepbuilder.entities.User;
 import jakarta.annotation.Nullable;
 import org.springframework.data.repository.CrudRepository;
 
