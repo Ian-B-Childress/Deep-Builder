@@ -7,8 +7,9 @@ import java.util.Optional;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    @Override
-    Iterable<User> findAll();
+    //dont need this, kind of exposes hashes
+//    @Override
+//    Iterable<User> findAll();
 
     @Override
     <S extends User> S save(S entity);
