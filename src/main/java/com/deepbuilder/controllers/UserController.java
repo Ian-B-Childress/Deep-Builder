@@ -43,11 +43,13 @@ private final UserService userService;
 
     @GetMapping(path = "/{userId}")
     public ResponseEntity<UserDto> findUser(@PathVariable Long userId){
-       if(userId < 0){
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-       }
        User user = userService.findById(userId);
-
         return ResponseEntity.ok(new UserDto(user));
+    }
+
+    @PutMapping(path = "/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user){
+        userService.updateUser(userId, user);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }
