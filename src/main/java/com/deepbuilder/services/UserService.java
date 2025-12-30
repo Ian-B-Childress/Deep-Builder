@@ -70,4 +70,17 @@ public class UserService {
         }
         return userRepository.save(foundUser);
     }
+
+    public List<User> findUserByUsername(String username){
+        List<User> foundUsers = new ArrayList<>();
+        try{
+            if(username == null || username.isBlank()){
+                throw new Exception();
+            }
+            foundUsers.add(userRepository.findByUsername(username));
+        }catch (Exception e){
+            throw new DaoException("Could not find this user!");
+        }
+    }
+
 }
