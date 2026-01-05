@@ -13,16 +13,16 @@ public class Talent {
     public Long talentId;
     public String talentName;
     public String talentDesc;
-    public Long talentStrengthRequirement;
-    public Long talentFortitudeRequirement;
-    public Long talentAgilityRequirement;
-    public Long talentWillpowerRequirement;
-    public Long talentCharismaRequirement;
-    public Long talentFrostdrawRequirement;
-    public Long talentGalebreatheRequirement;
-    public Long talentShadowcastRequirement;
-    public Long talentBloodrendRequirement;
-    public Long talentIronsingRequirement;
+    public int talentStrengthRequirement;
+    public int talentFortitudeRequirement;
+    public int talentAgilityRequirement;
+    public int talentWillpowerRequirement;
+    public int talentCharismaRequirement;
+    public int talentFrostdrawRequirement;
+    public int talentGalebreatheRequirement;
+    public int talentShadowcastRequirement;
+    public int talentBloodrendRequirement;
+    public int talentIronsingRequirement;
 
     public Talent() {
     }
@@ -51,83 +51,83 @@ public class Talent {
         this.talentDesc = talentDesc;
     }
 
-    public Long getTalentStrengthRequirement() {
+    public int getTalentStrengthRequirement() {
         return talentStrengthRequirement;
     }
 
-    public void setTalentStrengthRequirement(Long talentStrengthRequirement) {
+    public void setTalentStrengthRequirement(int talentStrengthRequirement) {
         this.talentStrengthRequirement = talentStrengthRequirement;
     }
 
-    public Long getTalentFortitudeRequirement() {
+    public int getTalentFortitudeRequirement() {
         return talentFortitudeRequirement;
     }
 
-    public void setTalentFortitudeRequirement(Long talentFortitudeRequirement) {
+    public void setTalentFortitudeRequirement(int talentFortitudeRequirement) {
         this.talentFortitudeRequirement = talentFortitudeRequirement;
     }
 
-    public Long getTalentAgilityRequirement() {
+    public int getTalentAgilityRequirement() {
         return talentAgilityRequirement;
     }
 
-    public void setTalentAgilityRequirement(Long talentAgilityRequirement) {
+    public void setTalentAgilityRequirement(int talentAgilityRequirement) {
         this.talentAgilityRequirement = talentAgilityRequirement;
     }
 
-    public Long getTalentWillpowerRequirement() {
+    public int getTalentWillpowerRequirement() {
         return talentWillpowerRequirement;
     }
 
-    public void setTalentWillpowerRequirement(Long talentWillpowerRequirement) {
+    public void setTalentWillpowerRequirement(int talentWillpowerRequirement) {
         this.talentWillpowerRequirement = talentWillpowerRequirement;
     }
 
-    public Long getTalentCharismaRequirement() {
+    public int getTalentCharismaRequirement() {
         return talentCharismaRequirement;
     }
 
-    public void setTalentCharismaRequirement(Long talentCharismaRequirement) {
+    public void setTalentCharismaRequirement(int talentCharismaRequirement) {
         this.talentCharismaRequirement = talentCharismaRequirement;
     }
 
-    public Long getTalentFrostdrawRequirement() {
+    public int getTalentFrostdrawRequirement() {
         return talentFrostdrawRequirement;
     }
 
-    public void setTalentFrostdrawRequirement(Long talentFrostdrawRequirement) {
+    public void setTalentFrostdrawRequirement(int talentFrostdrawRequirement) {
         this.talentFrostdrawRequirement = talentFrostdrawRequirement;
     }
 
-    public Long getTalentGalebreatheRequirement() {
+    public int getTalentGalebreatheRequirement() {
         return talentGalebreatheRequirement;
     }
 
-    public void setTalentGalebreatheRequirement(Long talentGalebreatheRequirement) {
+    public void setTalentGalebreatheRequirement(int talentGalebreatheRequirement) {
         this.talentGalebreatheRequirement = talentGalebreatheRequirement;
     }
 
-    public Long getTalentShadowcastRequirement() {
+    public int getTalentShadowcastRequirement() {
         return talentShadowcastRequirement;
     }
 
-    public void setTalentShadowcastRequirement(Long talentShadowcastRequirement) {
+    public void setTalentShadowcastRequirement(int talentShadowcastRequirement) {
         this.talentShadowcastRequirement = talentShadowcastRequirement;
     }
 
-    public Long getTalentBloodrendRequirement() {
+    public int getTalentBloodrendRequirement() {
         return talentBloodrendRequirement;
     }
 
-    public void setTalentBloodrendRequirement(Long talentBloodrendRequirement) {
+    public void setTalentBloodrendRequirement(int talentBloodrendRequirement) {
         this.talentBloodrendRequirement = talentBloodrendRequirement;
     }
 
-    public Long getTalentIronsingRequirement() {
+    public int getTalentIronsingRequirement() {
         return talentIronsingRequirement;
     }
 
-    public void setTalentIronsingRequirement(Long talentIronsingRequirement) {
+    public void setTalentIronsingRequirement(int talentIronsingRequirement) {
         this.talentIronsingRequirement = talentIronsingRequirement;
     }
 }
