@@ -27,6 +27,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     //TODO: do dis
 
-    User findByUsername(String userName);
+    List<User> findByUsernameContainingIgnoreCase(String username);
 
 }

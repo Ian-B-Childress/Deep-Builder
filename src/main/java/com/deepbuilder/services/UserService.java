@@ -72,12 +72,11 @@ public class UserService {
     }
 
     public List<User> findUserByUsername(String username){
-        List<User> foundUsers = new ArrayList<>();
         try{
             if(username == null || username.isBlank()){
                 throw new Exception();
             }
-            foundUsers.add(userRepository.findByUsername(username));
+            return userRepository.findByUsernameContainingIgnoreCase(username);
         }catch (Exception e){
             throw new DaoException("Could not find this user!");
         }

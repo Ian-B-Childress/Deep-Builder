@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import com.deepbuilder.repository.UserRepository;
 import com.deepbuilder.services.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -51,5 +53,15 @@ private final UserService userService;
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user){
         userService.updateUser(userId, user);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<UserDto>> findByUser(@RequestParam String username){
+       List<User> matchingUsers = userService.findUserByUsername(username);
+       List<UserDto> dtoUsers = matchingUsers.stream()
+               .map(UserDto::from)
+               .toList();
+
+        return ResponseEntity.ok(dtoUsers);
     }
 }

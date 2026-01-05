@@ -13,6 +13,10 @@ public class UserDto {
         this.username = user.getUsername();
     }
 
+    public static UserDto from(User user){
+        return new UserDto(user);
+    }
+
     public Long getId() {
         return id;
     }
