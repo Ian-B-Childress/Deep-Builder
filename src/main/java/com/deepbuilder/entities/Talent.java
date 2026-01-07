@@ -1,16 +1,15 @@
 package com.deepbuilder.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Talent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "talent_id")
     public Long talentId;
+    @Column(name = "talent_name")
     public String talentName;
     public String talentDesc;
     public int talentStrengthRequirement;
@@ -18,6 +17,7 @@ public class Talent {
     public int talentAgilityRequirement;
     public int talentWillpowerRequirement;
     public int talentCharismaRequirement;
+    public int talentFlamecharmRequirement;
     public int talentFrostdrawRequirement;
     public int talentGalebreatheRequirement;
     public int talentShadowcastRequirement;
@@ -25,6 +25,14 @@ public class Talent {
     public int talentIronsingRequirement;
 
     public Talent() {
+    }
+
+    public int getTalentFlamecharmRequirement() {
+        return talentFlamecharmRequirement;
+    }
+
+    public void setTalentFlamecharmRequirement(int talentFlamecharmRequirement) {
+        this.talentFlamecharmRequirement = talentFlamecharmRequirement;
     }
 
     public Long getTalentId() {
@@ -129,5 +137,21 @@ public class Talent {
 
     public void setTalentIronsingRequirement(int talentIronsingRequirement) {
         this.talentIronsingRequirement = talentIronsingRequirement;
+    }
+
+
+
+    public void updateRequirementsFrom(Talent source){
+        this.talentAgilityRequirement = source.talentAgilityRequirement;
+        this.talentCharismaRequirement = source.talentCharismaRequirement;
+        this.talentFortitudeRequirement = source.talentFortitudeRequirement;
+        this.talentStrengthRequirement = source.talentStrengthRequirement;
+        this.talentWillpowerRequirement = source.talentWillpowerRequirement;
+        this.talentBloodrendRequirement = source.talentBloodrendRequirement;
+        this.talentFrostdrawRequirement = source.talentFrostdrawRequirement;
+        this.talentGalebreatheRequirement = source.talentGalebreatheRequirement;
+        this.talentIronsingRequirement = source.talentIronsingRequirement;
+        this.talentShadowcastRequirement = source.talentShadowcastRequirement;
+        this.talentFlamecharmRequirement = source.talentFlamecharmRequirement;
     }
 }

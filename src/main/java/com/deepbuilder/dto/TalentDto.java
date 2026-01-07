@@ -35,6 +35,9 @@ public class TalentDto {
         if(talent.talentCharismaRequirement > 0){
             requirements.put("charisma", talent.talentCharismaRequirement);
         }
+        if(talent.talentFlamecharmRequirement > 0){
+            requirements.put("flamecharm", talent.talentFlamecharmRequirement);
+        }
         if(talent.talentFrostdrawRequirement > 0){
             requirements.put("frostdraw", talent.talentFrostdrawRequirement);
         }
