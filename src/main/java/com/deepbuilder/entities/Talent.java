@@ -2,6 +2,10 @@ package com.deepbuilder.entities;
 
 import jakarta.persistence.*;
 
+import java.util.EnumMap;
+import java.util.Map;
+import com.deepbuilder.entities.Stat.StatType;
+
 @Entity
 public class Talent {
 
@@ -12,27 +16,25 @@ public class Talent {
     @Column(name = "talent_name")
     public String talentName;
     public String talentDesc;
-    public int talentStrengthRequirement;
-    public int talentFortitudeRequirement;
-    public int talentAgilityRequirement;
-    public int talentWillpowerRequirement;
-    public int talentCharismaRequirement;
-    public int talentFlamecharmRequirement;
-    public int talentFrostdrawRequirement;
-    public int talentGalebreatheRequirement;
-    public int talentShadowcastRequirement;
-    public int talentBloodrendRequirement;
-    public int talentIronsingRequirement;
+
+    @ElementCollection
+    @CollectionTable(name = "talent_requirement", joinColumns = @JoinColumn(name = "talent_id"))
+    @MapKeyEnumerated(EnumType.STRING)
+    @MapKeyColumn(name = "stat")
+    @Column(name = "value")
+    private Map<StatType, Integer> requirements;
 
     public Talent() {
+        this.requirements = new EnumMap<>(StatType.class);
     }
 
-    public int getTalentFlamecharmRequirement() {
-        return talentFlamecharmRequirement;
+
+    public Map<StatType, Integer> getRequirements() {
+        return requirements;
     }
 
-    public void setTalentFlamecharmRequirement(int talentFlamecharmRequirement) {
-        this.talentFlamecharmRequirement = talentFlamecharmRequirement;
+    public void setRequirements(StatType stat, int value) {
+        requirements.put(stat, value);
     }
 
     public Long getTalentId() {
@@ -59,99 +61,4 @@ public class Talent {
         this.talentDesc = talentDesc;
     }
 
-    public int getTalentStrengthRequirement() {
-        return talentStrengthRequirement;
-    }
-
-    public void setTalentStrengthRequirement(int talentStrengthRequirement) {
-        this.talentStrengthRequirement = talentStrengthRequirement;
-    }
-
-    public int getTalentFortitudeRequirement() {
-        return talentFortitudeRequirement;
-    }
-
-    public void setTalentFortitudeRequirement(int talentFortitudeRequirement) {
-        this.talentFortitudeRequirement = talentFortitudeRequirement;
-    }
-
-    public int getTalentAgilityRequirement() {
-        return talentAgilityRequirement;
-    }
-
-    public void setTalentAgilityRequirement(int talentAgilityRequirement) {
-        this.talentAgilityRequirement = talentAgilityRequirement;
-    }
-
-    public int getTalentWillpowerRequirement() {
-        return talentWillpowerRequirement;
-    }
-
-    public void setTalentWillpowerRequirement(int talentWillpowerRequirement) {
-        this.talentWillpowerRequirement = talentWillpowerRequirement;
-    }
-
-    public int getTalentCharismaRequirement() {
-        return talentCharismaRequirement;
-    }
-
-    public void setTalentCharismaRequirement(int talentCharismaRequirement) {
-        this.talentCharismaRequirement = talentCharismaRequirement;
-    }
-
-    public int getTalentFrostdrawRequirement() {
-        return talentFrostdrawRequirement;
-    }
-
-    public void setTalentFrostdrawRequirement(int talentFrostdrawRequirement) {
-        this.talentFrostdrawRequirement = talentFrostdrawRequirement;
-    }
-
-    public int getTalentGalebreatheRequirement() {
-        return talentGalebreatheRequirement;
-    }
-
-    public void setTalentGalebreatheRequirement(int talentGalebreatheRequirement) {
-        this.talentGalebreatheRequirement = talentGalebreatheRequirement;
-    }
-
-    public int getTalentShadowcastRequirement() {
-        return talentShadowcastRequirement;
-    }
-
-    public void setTalentShadowcastRequirement(int talentShadowcastRequirement) {
-        this.talentShadowcastRequirement = talentShadowcastRequirement;
-    }
-
-    public int getTalentBloodrendRequirement() {
-        return talentBloodrendRequirement;
-    }
-
-    public void setTalentBloodrendRequirement(int talentBloodrendRequirement) {
-        this.talentBloodrendRequirement = talentBloodrendRequirement;
-    }
-
-    public int getTalentIronsingRequirement() {
-        return talentIronsingRequirement;
-    }
-
-    public void setTalentIronsingRequirement(int talentIronsingRequirement) {
-        this.talentIronsingRequirement = talentIronsingRequirement;
-    }
-
-
-
-    public void updateRequirementsFrom(Talent source){
-        this.talentAgilityRequirement = source.talentAgilityRequirement;
-        this.talentCharismaRequirement = source.talentCharismaRequirement;
-        this.talentFortitudeRequirement = source.talentFortitudeRequirement;
-        this.talentStrengthRequirement = source.talentStrengthRequirement;
-        this.talentWillpowerRequirement = source.talentWillpowerRequirement;
-        this.talentBloodrendRequirement = source.talentBloodrendRequirement;
-        this.talentFrostdrawRequirement = source.talentFrostdrawRequirement;
-        this.talentGalebreatheRequirement = source.talentGalebreatheRequirement;
-        this.talentIronsingRequirement = source.talentIronsingRequirement;
-        this.talentShadowcastRequirement = source.talentShadowcastRequirement;
-        this.talentFlamecharmRequirement = source.talentFlamecharmRequirement;
-    }
 }

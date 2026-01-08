@@ -13,11 +13,8 @@ import java.util.Optional;
 @Service
 public class TalentService {
     private final TalentRepository talentRepository;
-    private final TalentDto talentDto;
-
-    public TalentService(TalentRepository talentRepository, TalentDto talentDto) {
+    public TalentService(TalentRepository talentRepository) {
         this.talentRepository = talentRepository;
-        this.talentDto = talentDto;
     }
 
     public Talent createTalent(Talent talent){
@@ -58,11 +55,11 @@ public class TalentService {
             updatedTalent = findById(talentId);
             updatedTalent.setTalentDesc(talent.getTalentDesc());
             updatedTalent.setTalentName(talent.getTalentName());
-            talentDto.mapRequirements(updatedTalent);
 
         } catch (Exception e) {
             throw new DaoException("You're trying to update a talent with incorrect data.");
         }
+        return updatedTalent;
     }
 
 
@@ -76,6 +73,7 @@ public class TalentService {
         } catch (RuntimeException e) {
             throw new DaoException("No talents could be found with that name.");
         }
+        return null;
     }
 
     //TODO find all by build stats(Build build);
