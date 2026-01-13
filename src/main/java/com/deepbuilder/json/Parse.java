@@ -52,15 +52,32 @@ public class Parse implements CommandLineRunner {
             JsonNode weaponReqs = reqNode.get("weapon");
             JsonNode attunementReq = reqNode.get("attunement");
 
-          Iterator<String> fieldNames = baseReqs.fieldNames();
+          Iterator<String> baseFieldNames = baseReqs.fieldNames();
+          Iterator<String> weaponFieldNames = weaponReqs.fieldNames();
+          Iterator<String> attunementFieldNames = attunementReq.fieldNames();
+          int count = 0;
 
-          while (fieldNames.hasNext()){
-              statName = fieldNames.next();
+          while (baseFieldNames.hasNext()){
+              count++;
+              statName = baseFieldNames.next();
               statValue = baseReqs.get(statName).intValue();
 
               StatType name = StatType.valueOf(statName);
 
               map.put(name, statValue);
+
+              if(count == 8){
+                  count = 0;
+                  while(count < 4){
+                      count++;
+                      statName = weaponFieldNames.next().s;
+                      statValue = weaponReqs.get(statName).intValue();
+
+                      name = StatType.valueOf(statName);
+                      map.put(name, statValue);
+                  }
+                  count = 0;
+              }
           }
 
             System.out.println(talentJson.get("name").asText());
