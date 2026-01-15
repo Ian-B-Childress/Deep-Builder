@@ -66,14 +66,15 @@ public class Parse implements CommandLineRunner {
 
               map.put(name, statValue);
 
-              if(count == 8){
+              if(count >= 8){
                   count = 0;
-                  while(count < 4){
+                  while(count < 3){
                       count++;
-                      statName = weaponFieldNames.next().s;
+                      statName = weaponFieldNames.next();
+                      String enumName = statName.split(" ")[0];
                       statValue = weaponReqs.get(statName).intValue();
 
-                      name = StatType.valueOf(statName);
+                      name = StatType.valueOf(enumName);
                       map.put(name, statValue);
                   }
                   count = 0;
