@@ -78,9 +78,17 @@ public class Parse implements CommandLineRunner {
                       map.put(name, statValue);
                   }
                   count = 0;
+                  while(count < 7){
+                      count++;
+                      statName = attunementFieldNames.next();
+                      statValue = attunementReq.get(statName).intValue();
+
+                      name = StatType.valueOf(statName);
+                      map.put(name, statValue);
+                  }
               }
           }
-
+            talentService.createTalent(t)
             System.out.println(talentJson.get("name").asText());
             System.out.println(map.toString());
         }
