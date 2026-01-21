@@ -5,12 +5,14 @@ import com.deepbuilder.entities.Talent;
 import com.deepbuilder.exception.DaoException;
 import com.deepbuilder.repository.TalentRepository;
 import com.deepbuilder.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class TalentService {
     private final TalentRepository talentRepository;
     public TalentService(TalentRepository talentRepository) {
@@ -24,6 +26,7 @@ public class TalentService {
             }
             return talentRepository.save(talent);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new DaoException("Sorry! the talent you're trying to create is not valid.");
         }
     }
