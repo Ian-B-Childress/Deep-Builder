@@ -25,8 +25,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Override
     boolean existsById(Long userId);
 
-    //TODO: do dis
-
     List<User> findByUsernameContainingIgnoreCase(String username);
 
+    User findByUsername(String username);
 }

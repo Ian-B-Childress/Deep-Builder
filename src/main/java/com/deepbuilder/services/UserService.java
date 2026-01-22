@@ -82,4 +82,14 @@ public class UserService {
         }
     }
 
+    public User getUserByUsername(String username) {
+        try{
+            if(username.isBlank()){
+                throw new Exception();
+            }
+            return userRepository.findByUsername(username);
+        }catch (Exception e){
+            throw new DaoException("Could not get by username.");
+        }
+    }
 }
