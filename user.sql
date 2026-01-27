@@ -1,0 +1,21 @@
+CREATE USER builder_owner
+WITH PASSWORD 'builder_owner';
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA PUBLIC
+TO builder_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO builder_owner;
+
+CREATE USER builder_user
+WITH PASSWORD 'builder_user';
+
+GRANT SELECT
+ON ALL TABLES IN SCHEMA PUBLIC
+TO builder_user;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES in SCHEMA public
+TO builder_user;
