@@ -1,4 +1,4 @@
-import API from '../../services/APIService.js';
+// USER STORE MODULE.
 import { createUser as apiCreateUser } from '../../services/APIService.js';
 
 export default {

@@ -1,3 +1,5 @@
+<!-- TODO REFACTOR THIS TO CREATE USER - VIEW -->
+
 <script setup>
 import { useStore } from 'vuex';
 import { reactive } from 'vue';
