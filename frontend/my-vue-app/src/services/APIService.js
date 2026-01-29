@@ -6,4 +6,8 @@ const builderAPI = axios.create({
 });
 
 
+export const getUsers = () => builderAPI.get('/users');
+
+export const createUser = (user) => builderAPI.post('/users', user);
+
 export default builderAPI;

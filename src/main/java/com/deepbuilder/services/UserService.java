@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.deepbuilder.repository.UserRepository;
 
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +21,7 @@ public class UserService {
 
    public User createUser(User user){
         try{
-            if(user.getUsername().isBlank() || user.getHash().isBlank()){
+            if(user.getUsername().isBlank() || user.getPassword().isBlank()){
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
@@ -63,7 +61,7 @@ public class UserService {
             }
             foundUser = findById(userId);
             foundUser.setUsername(user.getUsername());
-            foundUser.setHash(user.getHash());
+            foundUser.setPassword(user.getPassword());
 
         } catch (Exception e) {
             throw new DaoException("user ID must be valid, cannot update this user.");

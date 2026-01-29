@@ -1,13 +1,14 @@
 begin transaction;
 
-DROP TABLE IF EXISTS build, talent, users,mantra, build_talent, build_mantra;
+DROP TABLE IF EXISTS build, users,mantra, build_talent, build_mantra;
 
 CREATE TYPE talent_weapon AS ENUM('LIGHT', 'MEDIUM', 'HEAVY');
 
 create table users (
 	user_id SERIAL PRIMARY KEY,
 	hash varchar(200),
-	user_name varchar(30)
+	user_name varchar(30),
+	role varchar(20)
 	);
 
 create table build(

@@ -1,6 +1,5 @@
 package com.deepbuilder.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -16,20 +15,18 @@ public class User {
     private Long userId;
     @Column(name = "user_name")
     private String username;
-    private String hash;
+    @Column(name = "hash")
+    private String password;
     @Column(name = "role")
     private String role;
-    @JsonIgnore
-    private boolean activated;
 
     public User(){}
 
-    public User(Long userId, String username, String hash, String role) {
+    public User(Long userId, String username, String password, String role) {
         this.userId = userId;
         this.username = username;
-        this.hash = hash;
+        this.password = password;
         this.role = role;
-        this.activated = true;
     }
 
 
@@ -37,12 +34,10 @@ public class User {
     public void setUserId(Long userId) { this.userId = userId; }
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
-    public String getHash() { return hash; }
-    public void setHash(String hash) { this.hash = hash; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
-    public boolean isActivated() { return activated; }
-    public void setActivated(boolean activated) { this.activated = activated; }
 
     public Set<Authority> getAuthorities() {
         Set<Authority> authorities = new HashSet<>();

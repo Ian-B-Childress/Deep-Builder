@@ -1,5 +1,6 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+import users from './modules/users.js';
 
 export function createStore(currentToken, currentUser){
     let store = _createStore({
@@ -25,6 +26,9 @@ export function createStore(currentToken, currentUser){
                 state.user = {};
                 axios.defaults.header.common = {};
             }
+        },
+        modules: {
+            users,
         },
     });
     return store;

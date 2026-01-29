@@ -35,6 +35,7 @@ public class UserModelDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String login) {
         log.debug("Authenticating user '{}'", login);
 
+
         String lowercaseLogin = login.toLowerCase();
 
         User user = userService.getUserByUsername(lowercaseLogin);
@@ -46,9 +47,7 @@ public class UserModelDetailsService implements UserDetailsService {
     }
 
     private org.springframework.security.core.userdetails.User createSpringSecurityUser(String lowercaseLogin, User user) {
-        if (!user.isActivated()) {
-            throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
-        }
+
 
         Set<Authority> userAuthorities = user.getAuthorities();
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -58,7 +57,7 @@ public class UserModelDetailsService implements UserDetailsService {
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
-                user.getHash(),
+                user.getPassword(),
                 grantedAuthorities
         );
     }
