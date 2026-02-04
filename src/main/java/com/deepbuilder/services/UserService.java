@@ -1,5 +1,6 @@
 package com.deepbuilder.services;
 
+import com.deepbuilder.entities.Role;
 import com.deepbuilder.entities.User;
 import com.deepbuilder.exception.DaoException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private Role role;
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -27,6 +29,7 @@ public class UserService {
         } catch (IllegalArgumentException e) {
             throw new RuntimeException(e);
         }
+        user.setRole(Role.USER);
         return userRepository.save(user);
     }
 

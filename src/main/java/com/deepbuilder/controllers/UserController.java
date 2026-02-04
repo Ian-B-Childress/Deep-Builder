@@ -45,6 +45,7 @@ private final UserRepository userRepository;
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Username is taken");
         }
             User savedUser = userService.createUser(user);
+
             return ResponseEntity.ok(savedUser);
     }
 

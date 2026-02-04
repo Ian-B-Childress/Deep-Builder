@@ -17,12 +17,13 @@ public class User {
     private String username;
     @Column(name = "hash")
     private String password;
-    @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 
     public User(){}
 
-    public User(Long userId, String username, String password, String role) {
+    public User(Long userId, String username, String password, Role role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -36,15 +37,12 @@ public class User {
     public void setUsername(String username) { this.username = username; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
 
     public Set<Authority> getAuthorities() {
         Set<Authority> authorities = new HashSet<>();
-        if (role != null && !role.isEmpty()) {
-            String authority = role.startsWith("ROLE_") ? role : "ROLE_" + role;
-            authorities.add(new Authority(authority));
-        }
+       authorities.add(new Authority("ROLE_" + role.name()));
         return authorities;
     }
 }
