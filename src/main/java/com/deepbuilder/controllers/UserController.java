@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import com.deepbuilder.repository.UserRepository;
 import com.deepbuilder.services.UserService;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,11 @@ import java.util.Optional;
 @RequestMapping("api/users")
 public class UserController {
 private final UserService userService;
+private final UserRepository userRepository;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
 
@@ -37,6 +40,9 @@ private final UserService userService;
     public ResponseEntity<User> createNewUser(@RequestBody User user){
         if(user == null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(userRepository.existsByUsername(user.getUsername())){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username is taken");
         }
             User savedUser = userService.createUser(user);
             return ResponseEntity.ok(savedUser);

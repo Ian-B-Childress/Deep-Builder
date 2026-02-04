@@ -18,6 +18,8 @@ export default {
     async createUser({ commit }, payload) {
         console.log('Creating user with payload:', payload);
       try {
+
+        
         const res = await apiCreateUser(payload)
 
         commit('ADD_USER', res.data);

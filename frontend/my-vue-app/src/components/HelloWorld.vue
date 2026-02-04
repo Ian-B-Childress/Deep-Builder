@@ -1,4 +1,4 @@
-<!-- TODO REFACTOR THIS TO CREATE USER - VIEW -->
+<!-- TODO REFACTOR THIS TO CREATEUSER-VIEW -->
 
 <script setup>
 import { useStore } from 'vuex';
@@ -10,12 +10,21 @@ const form = reactive({
   password: '',
 });
 
+const error = reactive({
+  show: false,
+  message: 'Username is taken',
+});
+
 const submit = async () => {
   try{
     await store.dispatch('createUser', form);
     
   } catch (err){
     console.log(err);
+    if(err.response?.status === 409){
+      error.show = true;
+      return;
+    }
     alert('Cannot create user');
   }
 };
@@ -34,6 +43,8 @@ const submit = async () => {
 
      
       <input type="submit" value="submit" class="bg-green-700 rounded-md px-2 py-0.5">
+
+      <p v-if="error.show" class="text-red-500">Sorry, {{ error.message }}</p>
     </form>
   </div>
 
