@@ -4,6 +4,7 @@ import com.deepbuilder.entities.Role;
 import com.deepbuilder.entities.User;
 import com.deepbuilder.exception.DaoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.deepbuilder.repository.UserRepository;
 
@@ -15,10 +16,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private Role role;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
    public User createUser(User user){
@@ -29,6 +32,7 @@ public class UserService {
         } catch (IllegalArgumentException e) {
             throw new RuntimeException(e);
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
         return userRepository.save(user);
     }
