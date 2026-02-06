@@ -11,11 +11,11 @@ import HelloWorld from '../components/HelloWorld.vue'
 const routes = [
     {
         path: '/',
-        redirect: () => 'login'
+        redirect: () => 'register'
     },
     {
-        path: '/login',
-        name: 'login',
+        path: '/register',
+        name: 'register',
         component: HelloWorld,
         meta:{
             requiresAuth: false

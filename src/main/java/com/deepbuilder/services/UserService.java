@@ -3,6 +3,7 @@ package com.deepbuilder.services;
 import com.deepbuilder.entities.Role;
 import com.deepbuilder.entities.User;
 import com.deepbuilder.exception.DaoException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-   public User createUser(User user){
+   public User createUser(@Valid User user){
         try{
             if(user.getUsername().isBlank() || user.getPassword().isBlank()){
                 throw new IllegalArgumentException();

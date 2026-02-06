@@ -1,6 +1,6 @@
 package com.deepbuilder.repository;
 import com.deepbuilder.entities.User;
-import jakarta.annotation.Nullable;
+import jakarta.validation.Valid;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -30,4 +30,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     boolean existsByUsername(String username);
+
 }
