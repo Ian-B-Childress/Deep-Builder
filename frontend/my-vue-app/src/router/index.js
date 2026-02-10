@@ -3,6 +3,8 @@ import { useStore } from 'vuex'
 
 //import views vv
 import HelloWorld from '../components/HelloWorld.vue'
+import Home from '../views/HomeView.vue'
+
 
 
 
@@ -11,7 +13,16 @@ import HelloWorld from '../components/HelloWorld.vue'
 const routes = [
     {
         path: '/',
-        redirect: () => 'register'
+        name: 'home',
+        component: Home,
+        meta:{
+            requiresAuth: false
+        }
+    },
+    
+    {
+
+        
     },
     {
         path: '/register',

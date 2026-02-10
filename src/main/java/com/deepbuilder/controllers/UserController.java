@@ -3,6 +3,7 @@ package com.deepbuilder.controllers;
 import com.deepbuilder.dto.UserDto;
 import com.deepbuilder.entities.User;
 import com.deepbuilder.exception.DaoException;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -31,18 +32,6 @@ private final UserRepository userRepository;
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
-    @PostMapping()
-    public ResponseEntity<User> createNewUser(@RequestBody User user){
-        if(user == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        if(userRepository.existsByUsername(user.getUsername())){
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username is taken");
-        }
-            User savedUser = userService.createUser(user);
-
-            return ResponseEntity.ok(savedUser);
-    }
 
 
     @GetMapping(path = "/{userId}")

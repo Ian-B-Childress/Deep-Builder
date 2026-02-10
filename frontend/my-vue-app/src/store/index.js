@@ -1,5 +1,4 @@
 import { createStore as _createStore } from 'vuex';
-import axios from 'axios';
 import users from './modules/users.js';
 
 export function createStore(currentToken, currentUser){
@@ -13,7 +12,7 @@ export function createStore(currentToken, currentUser){
             SET_AUTH_TOKEN(state, token) {
                 state.token = token;
                 localStorage.setItem('token', token);
-                axios.defaults.header.common['Authorization'] = `Bearer ${token}`; 
+                
             },
             SET_USER(state, user){
                 state.user = user;
@@ -24,7 +23,7 @@ export function createStore(currentToken, currentUser){
                 localStorage.removeItem('user');
                 state.token = '';
                 state.user = {};
-                axios.defaults.header.common = {};
+                
             }
         },
         modules: {

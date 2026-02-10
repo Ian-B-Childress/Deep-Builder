@@ -33,8 +33,12 @@ const submit = async () => {
 
 <template>
 
- 
+ <router-view/>
 
+ <div class="bg-red-500 text-white p-4 max-w-sm mx-auto">
+    <h1 class="text-center">Create a User</h1>
+  </div>
+  
   <div class="mx-auto flex items-center m-4">
     <form @submit.prevent="submit" name="createUser" action="submit" class="mx-auto flex items-center gap-2 flex-row">
 
