@@ -3,6 +3,8 @@
 <script setup>
 import { useStore } from 'vuex';
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
  
 const store = useStore();
 const form = reactive({
@@ -47,6 +49,7 @@ const submit = async () => {
 
      
       <input type="submit" value="submit" class="bg-green-700 rounded-md px-2 py-0.5">
+      <button type="button" @click="router.push('/')" class="bg-gray-600 rounded-md px-2 py-0.5 text-white">Login</button>
 
       <p v-if="error.show" class="text-red-500">Sorry, {{ error.message }}</p>
     </form>

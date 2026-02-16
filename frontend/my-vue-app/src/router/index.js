@@ -4,6 +4,7 @@ import { useStore } from 'vuex'
 //import views vv
 import HelloWorld from '../components/HelloWorld.vue'
 import Home from '../views/HomeView.vue'
+import User from '../views/UserView.vue'
 
 
 
@@ -21,8 +22,12 @@ const routes = [
     },
     
     {
-
-        
+        path: '/user',
+        name: 'user',
+        component: User,
+        meta:{
+            requiresAuth: true
+        }
     },
     {
         path: '/register',
